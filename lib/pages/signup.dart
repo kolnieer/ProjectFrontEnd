@@ -24,12 +24,12 @@ class _SignupState extends State<Signup> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              color: Colors.black,
+              color: Colors.black87,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 80.0, 0 ,60.0 ),
                 child: Center(
                   child: Image(
-                    image: AssetImage('assets/Bigbrew.jpg'),
+                    image: AssetImage('assets/BigBrew Logo.jpg'),
                   ),
                 ),
               ),
@@ -52,6 +52,7 @@ class _SignupState extends State<Signup> {
                 ),
               ],
             ),
+            SizedBox(height: 5.0,),
             Container(
               padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0),
               child: Form(
@@ -69,7 +70,8 @@ class _SignupState extends State<Signup> {
                         focusedErrorBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                         ),
-                        label: Text('Name',
+                        label: Text(
+                          'Name',
                           style: TextStyle(
                             color: Colors.white,
                           ),
@@ -214,7 +216,8 @@ class _SignupState extends State<Signup> {
                             Navigator.pushReplacementNamed(context, '/login');
                           }
                         },
-                          child: Text ('Signup',
+                          child: Text (
+                            'Signup',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -227,7 +230,7 @@ class _SignupState extends State<Signup> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 50.0,),
+                    SizedBox(height: 10.0,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[

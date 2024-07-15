@@ -38,6 +38,7 @@ dependencies:
   http: ^1.2.1
   flutter_carousel_widget: ^2.2.0
   flutter_spinkit: ^5.2.1
+  gradient_elevated_button: ^1.0.0
 
 dev_dependencies:
   flutter_test:
