@@ -12,45 +12,78 @@ class _SignupState extends State<Signup> {
   String name = '';
   String email = '';
   String password = '';
+  String repeatpassword = '';
 
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange[600],
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(15.0, 50.0, 10.0, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'Lets Get Started',
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 2.0,
-                  fontSize: 24.5,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              color: Colors.black,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 80.0, 0 ,60.0 ),
+                child: Center(
+                  child: Image(
+                    image: AssetImage('assets/Bigbrew.jpg'),
+                  ),
                 ),
               ),
-              SizedBox(height: 30.0),
-              Form(
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.fromLTRB(10.0, 10.0, 0, 0),
+                  child:
+            Text(
+              'Create your Account!',
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                letterSpacing: 2.0,
+                fontSize: 16.0,
+                color: Colors.white,
+              ),
+            ),
+                ),
+              ],
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0),
+              child: Form(
                 key: formKey,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     TextFormField(
-                      maxLength: 50,
                       decoration: InputDecoration(
-                        label: Text('Name'),
+                        errorStyle: TextStyle(
+                          color: Colors.white,
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        label: Text('Name',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(15.0),
                         ),
                       ),
                       validator: (value){
                         if(value == null || value.isEmpty){
-                          return 'Please provide a name';
+                          return 'Please input your email';
                         }
-                        if(value.length < 2){
-                          return 'Name should be atleast 3 letters long';
+                        if(value.length < 3){
+                          return 'Name should be atleast 4';
                         }
                         return null;
                       },
@@ -58,42 +91,74 @@ class _SignupState extends State<Signup> {
                         name = value!;
                       },
                     ),
-                    SizedBox(height: 30.0,),
+                    SizedBox(height: 20.0,),
                     TextFormField(
-                      maxLength: 50,
                       decoration: InputDecoration(
-                        label: Text('Email'),
+                        errorStyle: TextStyle(
+                          color: Colors.white,
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        label: Text('Email',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(15.0),
                         ),
                       ),
                       validator: (value){
                         if(value == null || value.isEmpty){
-                          return 'Please provide Email first';
+                          return 'Please input your password';
                         }
+                        if(value.length < 8){
+                          return 'It should be at least 8 characters';
+                        }
+                        if(value.length > 20){
+                          return 'It must be maximum of 20 characters';
+                        }
+                        return null;
                       },
                       onSaved: (value){
                         email = value!;
                       },
                     ),
-                    SizedBox(height: 30.0,),
+                    SizedBox(height: 15.0,),
                     TextFormField(
                       obscureText: true,
                       decoration: InputDecoration(
-                        label: Text('Password'),
+                        errorStyle: TextStyle(
+                          color: Colors.white,
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        label: Text('Password',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(15.0),
                         ),
                       ),
                       validator: (value){
                         if(value == null || value.isEmpty){
-                          return 'Please provide a password';
+                          return 'Please input your password';
                         }
                         if(value.length < 8){
-                          return 'The password should be 8 characters long';
+                          return 'It should be at least 8 characters';
                         }
                         if(value.length > 20){
-                          return 'The password must be 20 characters long only';
+                          return 'It must be maximum of 20 characters';
                         }
                         return null;
                       },
@@ -101,49 +166,93 @@ class _SignupState extends State<Signup> {
                         password = value!;
                       },
                     ),
-                    SizedBox(height: 25.0),
-                    ElevatedButton(
-                      onPressed: (){
-                        if(formKey.currentState!.validate()){
-                          formKey.currentState!.save();
-                          print(name);
-                          print(email);
-                          print(password);
-                        }
-                      },
-                      child: Text('Signup'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange[400],
-                        foregroundColor: Colors.white,
+                    SizedBox(height: 15.0,),
+                    TextFormField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        errorStyle: TextStyle(
+                          color: Colors.white,
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        label: Text('Repeat Password',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                       ),
+                      validator: (value){
+                        if(value == null || value.isEmpty){
+                          return 'Please input your password';
+                        }
+                        if(value.length < 8){
+                          return 'It should be at least 8 characters';
+                        }
+                        if(value.length > 20){
+                          return 'It must be maximum of 20 characters';
+                        }
+                        return null;
+                      },
+                      onSaved: (value){
+                        repeatpassword = value!;
+                      },
                     ),
-                    SizedBox(height: 40.0,),
+                    SizedBox(height: 20,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        ElevatedButton(onPressed: (){
+                          if(formKey.currentState!.validate()){
+                            formKey.currentState!.save();
+                            Navigator.pushReplacementNamed(context, '/login');
+                          }
+                        },
+                          child: Text ('Signup',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black87,
+                            foregroundColor: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 50.0,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(
-                          'Already have an account?',
+                        Text('Already have an account?',
                           style: TextStyle(
-                            color : Colors.grey[600],
+                            color: Colors.black,
                           ),
                         ),
                         SizedBox(width: 5.0,),
                         InkWell(
                           child: Text(
-                            'Log in here',
+                            'Login here!',
                             style: TextStyle(
-                              color: Colors.orange[400],
+                              color: Colors.white,
                             ),
                           ),
-                          onTap: ()=> Navigator.popAndPushNamed(context, '/Login'),
+                          onTap: ()=> Navigator.popAndPushNamed(context, '/login'),
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:bigbrewteatech/services/product.dart';
 import 'package:bigbrewteatech/services/menuCard.dart';
+import 'package:http/http.dart' as http;
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -10,13 +13,25 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  List products = <Product>[
-    Product(productName: "WinterMelon", price: 39.99),
-    Product(productName: "Okinawa", price: 29.99),
-    Product(productName: "Green Apple", price: 39.99),
-    Product(productName: "Coffee", price: 29.99),
-    Product(productName: "Blueberry", price: 39.99),
-  ];
+  late Future<List<dynamic>> products;
+  Future<List<dynamic>> fetchData()async{
+    final response = await http.get(
+        Uri.parse('http://10.0.2.2:8080/products')
+    );
+    final data = jsonDecode(response.body);
+    List products = <Product>[];
+    for(var product in data){
+      products.add(Product.fromJson(product));
+    }
+    return products;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    products = fetchData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +46,6 @@ class _MenuState extends State<Menu> {
         ),
         centerTitle: true,
         backgroundColor: Colors.orange[400],
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(5.0),
-        child: Column(
-          children: products.map((product) =>
-              Menucard(product: product)).toList(),
-        ),
       ),
     );
   }
