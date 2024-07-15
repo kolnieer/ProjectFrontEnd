@@ -26,7 +26,7 @@ class _selectedProductState extends State<selectedProduct> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Order'),
+        title: Text('Orders'),
         backgroundColor: Colors.orange[400],
       ),
       body: Column(
