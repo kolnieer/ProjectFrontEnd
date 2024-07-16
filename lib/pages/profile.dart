@@ -101,7 +101,7 @@ class _ProfileState extends State<Profile> {
                     ),
                     SizedBox(width: 4.0,),
                     Text(
-                      'YEAR',
+                      'AGE',
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.white,
@@ -111,7 +111,7 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
                 Text(
-                  '$year Year',
+                  '$year Years Old',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

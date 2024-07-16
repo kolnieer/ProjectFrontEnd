@@ -28,24 +28,29 @@ class _CartState extends State<Cart> {
               color: Colors.black,
             ),
             ),
-            SizedBox(height: 20.0,),
-            TextField(
-              decoration: InputDecoration(
-                  label: Text(
-                    'Taro with pearl',
+            const SizedBox(height: 10,),
+            ElevatedButton(
+              onPressed: (){
+                Navigator.pushReplacementNamed(context, '/trackorder');
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange[600],
+                  foregroundColor: Colors.grey[200]
+              ),
+              child:  const Row(
+                children: <Widget>[
+                  Icon(Icons.fire_truck),
+                  SizedBox(width: 80,),
+                  Text(
+                    'Track my order',
                     style: TextStyle(
-                        color: Colors.grey[500]
+                      color: Colors.black,
                     ),
                   ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.horizontal(),
-                      borderSide: BorderSide.none
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[300]
+                ],
               ),
-            ),
 
+            )
           ],
         ),
       ),

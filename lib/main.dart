@@ -5,6 +5,7 @@ import 'package:bigbrewteatech/pages/signup.dart';
 import 'package:bigbrewteatech/pages/login.dart';
 import 'package:bigbrewteatech/pages/dashboard.dart';
 import 'package:bigbrewteatech/pages/cart.dart';
+import 'package:bigbrewteatech/pages/trackorder.dart';
 
 
 void main() => runApp(MaterialApp(
@@ -16,6 +17,6 @@ void main() => runApp(MaterialApp(
     '/signup' : (context) => Signup(),
     '/login' : (context) => Login(),
     '/cart' : (context) => Cart(),
-
+    '/trackorder' : (context) => trackorder(),
   },
 ));
