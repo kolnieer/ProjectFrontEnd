@@ -52,7 +52,7 @@ class _LoginState extends State<Login> {
                 padding: const EdgeInsets.fromLTRB(0.0, 0, 0, 0 ),
                 child: Center(
                   child: Image(
-                    image: AssetImage('assets/BigBrew Logo.jpg'),
+                    image: AssetImage('assets/bigbrew logo.jpg'),
                   ),
                 ),
               ),
@@ -78,10 +78,12 @@ class _LoginState extends State<Login> {
                               borderSide: BorderSide(color: Colors.brown),
                             ),
                             label: Text(
-                              'Email',
+                              'Email:',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
+                                fontFamily: 'AeroviasBrasilNF',
+                                fontSize: 20.0,
                               ),
                             ),
                             border: OutlineInputBorder(
@@ -115,10 +117,12 @@ class _LoginState extends State<Login> {
                               borderSide: BorderSide(color: Colors.brown),
                             ),
                             label: Text(
-                              'Password',
+                              'Password:',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
+                                fontFamily: 'AeroviasBrasilNF',
+                                fontSize: 20.0,
                               ),
                             ),
                             border: OutlineInputBorder(
@@ -267,7 +271,7 @@ class _LoginState extends State<Login> {
                             color: Colors.brown[900],
                           ),
                         ),
-                        onTap: ()=> Navigator.popAndPushNamed(context, '/Signup'),
+                        onTap: ()=> Navigator.popAndPushNamed(context, '/signup'),
                       ),
                     ],
                   ),
@@ -281,6 +285,7 @@ class _LoginState extends State<Login> {
     );
   }
 }
+
 
 
 

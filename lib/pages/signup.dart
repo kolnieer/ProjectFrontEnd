@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:roundcheckbox/roundcheckbox.dart';
 class Signup extends StatefulWidget {
   const Signup({super.key});
 
@@ -13,6 +13,9 @@ class _SignupState extends State<Signup> {
   String email = '';
   String password = '';
   String repeatpassword = '';
+  bool isChecked = true;
+
+  bool roundCheckBoxValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +27,14 @@ class _SignupState extends State<Signup> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              color: Colors.black87,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 80.0, 0 ,60.0 ),
+              color: Colors.grey[900],
                 child: Center(
                   child: Image(
-                    image: AssetImage('assets/BigBrew Logo.jpg'),
+                    image: AssetImage('assets/bigbrew logo.jpg'),
                   ),
                 ),
-              ),
             ),
+            SizedBox(height: 20.0,),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -46,13 +47,13 @@ class _SignupState extends State<Signup> {
                 fontWeight: FontWeight.w700,
                 letterSpacing: 2.0,
                 fontSize: 16.0,
-                color: Colors.white,
+                color: Colors.black87,
               ),
             ),
                 ),
               ],
             ),
-            SizedBox(height: 5.0,),
+            SizedBox(height: 10.0,),
             Container(
               padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0),
               child: Form(
@@ -62,18 +63,19 @@ class _SignupState extends State<Signup> {
                     TextFormField(
                       decoration: InputDecoration(
                         errorStyle: TextStyle(
-                          color: Colors.white,
+                          color: Colors.green,
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: BorderSide(color: Colors.brown),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                         ),
+
                         label: Text(
                           'Name',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         border: OutlineInputBorder(
@@ -105,9 +107,10 @@ class _SignupState extends State<Signup> {
                         focusedErrorBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                         ),
-                        label: Text('Email',
+                        label: Text(
+                          'Email',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black87,
                           ),
                         ),
                         border: OutlineInputBorder(
@@ -121,7 +124,7 @@ class _SignupState extends State<Signup> {
                         if(value.length < 8){
                           return 'It should be at least 8 characters';
                         }
-                        if(value.length > 20){
+                        if(value.length > 40){
                           return 'It must be maximum of 20 characters';
                         }
                         return null;
@@ -143,9 +146,10 @@ class _SignupState extends State<Signup> {
                         focusedErrorBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                         ),
-                        label: Text('Password',
+                        label: Text(
+                          'Password',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black87,
                           ),
                         ),
                         border: OutlineInputBorder(
@@ -181,9 +185,10 @@ class _SignupState extends State<Signup> {
                         focusedErrorBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                         ),
-                        label: Text('Repeat Password',
+                        label: Text(
+                          'Repeat Password',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         border: OutlineInputBorder(
@@ -210,12 +215,13 @@ class _SignupState extends State<Signup> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        ElevatedButton(onPressed: (){
-                          if(formKey.currentState!.validate()){
-                            formKey.currentState!.save();
-                            Navigator.pushReplacementNamed(context, '/login');
-                          }
-                        },
+                        ElevatedButton(
+                          onPressed: isChecked ? null: (){
+                            if(formKey.currentState!.validate()){
+                              formKey.currentState!.save();
+                              Navigator.pushReplacementNamed(context, '/login');
+                            }
+                          },
                           child: Text (
                             'Signup',
                             style: TextStyle(
@@ -230,7 +236,52 @@ class _SignupState extends State<Signup> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10.0,),
+                    SizedBox(height: 15.0,),
+                    SizedBox(width: 30.0,),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          RoundCheckBox(
+                            isChecked: roundCheckBoxValue,
+                            onTap: (selected) {
+                              setState(() {
+                                isChecked = !isChecked;
+                                roundCheckBoxValue = !roundCheckBoxValue;
+                              });
+                            },
+                            size: 30.0,
+                            checkedWidget: Icon(Icons.check_circle_outline_rounded, color: Colors.black),
+                            uncheckedWidget: Icon(Icons.mood),
+                          ),
+                          const SizedBox(height: 40.0,),
+                          SizedBox(width: 30.0,),
+                          Column(
+                            children: [
+                              Text(
+                                'By signing up, you acknowledge that you have',
+                                style: TextStyle(
+                                  fontSize: 14.0,
+                                  color: Colors.white,
+                                  fontFamily: 'BodoniFLFBold',
+                                ),
+                              ),
+                              SizedBox(width: 40.0,),
+                              SizedBox(height: 2.0,),
+                              Text(
+                                ' read & agree to our Terms and Conditions.',
+                                style: TextStyle(
+                                  fontSize: 14.0,
+                                  color: Colors.white,
+                                  fontFamily: 'BodoniFLFBold',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20.0,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -245,6 +296,7 @@ class _SignupState extends State<Signup> {
                             'Login here!',
                             style: TextStyle(
                               color: Colors.white,
+                              fontSize: 15.0,
                             ),
                           ),
                           onTap: ()=> Navigator.popAndPushNamed(context, '/login'),

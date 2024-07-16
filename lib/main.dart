@@ -9,7 +9,7 @@ import 'package:bigbrewteatech/pages/trackorder.dart';
 
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/',
+  initialRoute: '/signup',
   routes: {
     '/' : (context) => Dashboard(),
     '/menu' : (context) => Menu(),
