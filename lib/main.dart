@@ -8,7 +8,7 @@ import 'package:bigbrewteatech/pages/cart.dart';
 
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/',
+  initialRoute: '/signup',
   routes: {
     '/' : (context) => Dashboard(),
     '/menu' : (context) => Menu(),

@@ -33,7 +33,7 @@ class _ProfileState extends State<Profile> {
                   child: ExpandableCarousel(
                     options: CarouselOptions(
                       autoPlay: true,
-                      autoPlayInterval: const Duration(seconds: 5),
+                      autoPlayInterval: const Duration(seconds: 1)
                     ),
                     items: [
                       'assets/Carousel 1.jpg',
@@ -137,7 +137,7 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
                 Text(
-                  'trixieemacalalad@gmail.com',
+                  'trixieannlegaspicatibog@gmail.com',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -164,7 +164,7 @@ class _ProfileState extends State<Profile> {
                   style: GradientElevatedButton.styleFrom(
                     gradient: const LinearGradient(colors: [
                       Color.fromARGB(255, 129, 133, 127),
-                      Color.fromARGB(225, 145, 175, 190),
+                      Color.fromARGB(225, 145, 178, 195),
                     ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
