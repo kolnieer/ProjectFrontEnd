@@ -34,6 +34,7 @@ class _selectedProductState extends State<selectedProduct> {
         children: [
           Column(
             children: [
+              Image.network(product.url),
               Text(widget.product.productName),
               Text(widget.product.description),
             ],
@@ -100,7 +101,6 @@ class _selectedProductState extends State<selectedProduct> {
                 ),
               ],
             ),
-
           )
         ],
       ),
