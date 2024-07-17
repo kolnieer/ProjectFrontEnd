@@ -1,3 +1,5 @@
+import 'package:bigbrewteatech/pages/OrderCustomizationScreen.dart';
+import 'package:bigbrewteatech/pages/OrderTransactionHistoryScreen.dart';
 import 'package:bigbrewteatech/pages/menu.dart';
 import 'package:bigbrewteatech/pages/profile.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +11,7 @@ import 'package:bigbrewteatech/pages/trackorder.dart';
 
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/signup',
+  initialRoute: '/OrderTransactionHistoryScreen',
   routes: {
     '/' : (context) => Dashboard(),
     '/menu' : (context) => Menu(),
@@ -18,5 +20,7 @@ void main() => runApp(MaterialApp(
     '/login' : (context) => Login(),
     '/cart' : (context) => Cart(),
     '/trackorder' : (context) => trackorder(),
+    '/OrderCustomizationScreen' : (context) => OrderCustomizationScreen(),
+    '/OrderTransactionHistoryScreen' : (context) => OrderTransactionHistoryScreen(),
   },
 ));
