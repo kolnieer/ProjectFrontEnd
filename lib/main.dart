@@ -8,10 +8,14 @@ import 'package:bigbrewteatech/pages/login.dart';
 import 'package:bigbrewteatech/pages/dashboard.dart';
 import 'package:bigbrewteatech/pages/cart.dart';
 import 'package:bigbrewteatech/pages/trackorder.dart';
-
+import 'package:bigbrewteatech/pages/checkout.dart';
+import 'package:bigbrewteatech/pages/deliveryaddress.dart';
+import 'package:bigbrewteatech/pages/paymentmethod.dart';
 
 void main() => runApp(MaterialApp(
+
   initialRoute: '/OrderTransactionHistoryScreen',
+  initialRoute: '/',
   routes: {
     '/' : (context) => Dashboard(),
     '/menu' : (context) => Menu(),
@@ -22,5 +26,10 @@ void main() => runApp(MaterialApp(
     '/trackorder' : (context) => trackorder(),
     '/OrderCustomizationScreen' : (context) => OrderCustomizationScreen(),
     '/OrderTransactionHistoryScreen' : (context) => OrderTransactionHistoryScreen(),
+=======
+    '/checkout' : (context) => checkout(),
+    '/deliveryaddress' : (context) => deliveryaddress(),
+    '/paymentmethod' : (context) => paymentmethod(),
+
   },
 ));
