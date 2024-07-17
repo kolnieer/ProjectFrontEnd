@@ -1,3 +1,5 @@
+import 'package:bigbrewteatech/pages/OrderCustomizationScreen.dart';
+import 'package:bigbrewteatech/pages/OrderTransactionHistoryScreen.dart';
 import 'package:bigbrewteatech/pages/menu.dart';
 import 'package:bigbrewteatech/pages/profile.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,8 @@ import 'package:bigbrewteatech/pages/deliveryaddress.dart';
 import 'package:bigbrewteatech/pages/paymentmethod.dart';
 
 void main() => runApp(MaterialApp(
+
+  initialRoute: '/OrderTransactionHistoryScreen',
   initialRoute: '/',
   routes: {
     '/' : (context) => Dashboard(),
@@ -20,10 +24,12 @@ void main() => runApp(MaterialApp(
     '/login' : (context) => Login(),
     '/cart' : (context) => Cart(),
     '/trackorder' : (context) => trackorder(),
+    '/OrderCustomizationScreen' : (context) => OrderCustomizationScreen(),
+    '/OrderTransactionHistoryScreen' : (context) => OrderTransactionHistoryScreen(),
+=======
     '/checkout' : (context) => checkout(),
     '/deliveryaddress' : (context) => deliveryaddress(),
     '/paymentmethod' : (context) => paymentmethod(),
-
 
   },
 ));
