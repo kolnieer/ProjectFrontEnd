@@ -10,7 +10,12 @@ class _OrderCustomizationScreenState extends State<OrderCustomizationScreen> {
   int quantity = 1;
   String? selectedSugarLevel;
   String? selectedCupSize;
-  List<String> addons = [];
+  int nata = 0;
+  int coffeejelly = 0;
+  int pearl = 0;
+  int cheesecake = 0;
+  int grassjelly = 0;
+  Map<String, int> addons = {};
 
   List<String> availableBranches = [
     'Martinez St. Balayan',
@@ -42,14 +47,18 @@ class _OrderCustomizationScreenState extends State<OrderCustomizationScreen> {
     }
   }
 
-  void addAddon(String addon) {
+  void updateAddonQuantity(String addon, int scoops) {
     setState(() {
-      addons.contains(addon) ? addons.remove(addon) : addons.add(addon);
+      if (scoops > 0) {
+        addons[addon] = scoops;
+      } else {
+        addons.remove(addon);
+      }
     });
   }
 
   double calculateTotal() {
-    double addonsTotal = addons.length * 9.0;
+    double addonsTotal = addons.values.fold(0, (previous, current) => previous + (current * 9.0));
     return (getBasePrice() * quantity) + addonsTotal;
   }
 
@@ -85,7 +94,7 @@ class _OrderCustomizationScreenState extends State<OrderCustomizationScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Select Sugar Level:', style: TextStyle(fontSize: 18)),
+                                Text('Select Sugar Level:', style: TextStyle(fontSize: 15)),
                                 ...sugarLevels.map((sugar) {
                                   return RadioListTile<String>(
                                     title: Text(sugar),
@@ -101,26 +110,62 @@ class _OrderCustomizationScreenState extends State<OrderCustomizationScreen> {
                               ],
                             ),
                           ),
-                          VerticalDivider(
-                            width: 30,
-                            thickness: 3.0,
-                            color: Colors.brown,
-                          ),
-
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('Select Add-ons:', style: TextStyle(fontSize: 18)),
                                 ...availableAddons.map((addon) {
-                                  return CheckboxListTile(
-                                    title: Text(addon),
-                                    value: addons.contains(addon),
-                                    onChanged: (bool? value) {
-                                      if (value != null) {
-                                        addAddon(addon);
-                                      }
-                                    },
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(addon),
+                                      SizedBox(width: 10),
+                                      DropdownButton<int>(
+                                        hint: Text('Scoops', style: TextStyle(fontSize: 14)),
+                                        value: addons.containsKey(addon) ? addons[addon] : null,
+                                        onChanged: (int? scoops) {
+                                          setState(() {
+                                            if (scoops != null && scoops >= 0 && scoops <= 3) {
+                                              switch (addon) {
+                                                case 'Nata':
+                                                  nata = scoops;
+                                                  print('Nata Scoops: $nata');
+                                                  break;
+                                                case 'Coffee Jelly':
+                                                  coffeejelly = scoops;
+                                                  print('Coffee Jelly Scoops: $coffeejelly');
+                                                  break;
+                                                case 'Pearl':
+                                                  pearl = scoops;
+                                                  print('Pearl Scoops: $pearl');
+                                                  break;
+                                                case 'CheeseCake':
+                                                  cheesecake = scoops;
+                                                  print('CheeseCake Scoops: $cheesecake');
+                                                  break;
+                                                case 'Grass Jelly':
+                                                  grassjelly = scoops;
+                                                  print('Grass Jelly Scoops: $grassjelly');
+                                                  break;
+                                              }
+
+                                              if (scoops > 0) {
+                                                addons[addon] = scoops;
+                                              } else {
+                                                addons.remove(addon);
+                                              }
+                                            }
+                                          });
+                                        },
+                                        items: [0, 1, 2, 3].map<DropdownMenuItem<int>>((int value) {
+                                          return DropdownMenuItem<int>(
+                                            value: value,
+                                            child: Text(value == 0 ? 'None' : value.toString()),
+                                          );
+                                        }).toList(),
+                                      ),
+                                    ],
                                   );
                                 }).toList(),
                               ],
@@ -242,7 +287,7 @@ class _OrderCustomizationScreenState extends State<OrderCustomizationScreen> {
                   ),
                 ),
 
-                SizedBox(height: 16.0),
+                SizedBox(height: 20.0),
                 Container(
                   padding: EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -257,7 +302,7 @@ class _OrderCustomizationScreenState extends State<OrderCustomizationScreen> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {
-                          Navigator.restorablePushReplacementNamed(context, '/checkout');
+                          Navigator.pushReplacementNamed(context, '/checkout');
                         },
                         icon: Icon(Icons.add),
                         label: Text('Add Order'),
