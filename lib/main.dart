@@ -14,8 +14,7 @@ import 'package:bigbrewteatech/pages/paymentmethod.dart';
 
 void main() => runApp(MaterialApp(
 
-  initialRoute: '/OrderTransactionHistoryScreen',
-  initialRoute: '/',
+  initialRoute: '/OrderCustomizationScreen',
   routes: {
     '/' : (context) => Dashboard(),
     '/menu' : (context) => Menu(),
@@ -26,7 +25,6 @@ void main() => runApp(MaterialApp(
     '/trackorder' : (context) => trackorder(),
     '/OrderCustomizationScreen' : (context) => OrderCustomizationScreen(),
     '/OrderTransactionHistoryScreen' : (context) => OrderTransactionHistoryScreen(),
-=======
     '/checkout' : (context) => checkout(),
     '/deliveryaddress' : (context) => deliveryaddress(),
     '/paymentmethod' : (context) => paymentmethod(),
