@@ -257,6 +257,7 @@ class _OrderCustomizationScreenState extends State<OrderCustomizationScreen> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {
+                          Navigator.restorablePushReplacementNamed(context, '/checkout');
                         },
                         icon: Icon(Icons.add),
                         label: Text('Add Order'),

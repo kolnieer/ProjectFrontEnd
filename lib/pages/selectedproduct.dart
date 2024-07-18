@@ -83,7 +83,7 @@ class _selectedProductState extends State<selectedProduct> {
           const SizedBox(height: 10,),
           ElevatedButton(
             onPressed: (){
-              Navigator.pushReplacementNamed(context, '/cart');
+              Navigator.pushReplacementNamed(context, '/OrderCustomizationScreen');
             },
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange[600],
@@ -91,10 +91,10 @@ class _selectedProductState extends State<selectedProduct> {
             ),
             child:  const Row(
               children: <Widget>[
-                Icon(Icons.add_shopping_cart),
+                Icon(Icons.dashboard_customize),
                 SizedBox(width: 80,),
                 Text(
-                  'Add to Cart',
+                  'Customize your order',
                   style: TextStyle(
                     color: Colors.black,
                   ),

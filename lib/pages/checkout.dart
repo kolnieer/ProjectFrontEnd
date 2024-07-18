@@ -105,48 +105,6 @@ class _checkoutState extends State<checkout> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20.0, 0, 0),
-                child: ElevatedButton(
-                  onPressed: (){
-                    Navigator.pushReplacementNamed(context, '/paymentmethod');
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white60,
-                      foregroundColor: Colors.grey[200]
-                  ),
-                  child:  const Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.payment,
-                        color: Colors.black,
-                      ),
-
-                      SizedBox(width: 80,),
-                      Column(
-                        children: [
-                          Text(
-                            'Payment Method',
-                            style: TextStyle(
-                              wordSpacing: 5.0,
-                              fontSize: 20.0,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Text(
-                            'Cash on Delivery',
-                            style: TextStyle(
-                              wordSpacing: 5.0,
-                              fontSize: 19.0,
-                              color: Colors.black54,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               const SizedBox(height: 10,),
               ElevatedButton(
                 onPressed: (){
