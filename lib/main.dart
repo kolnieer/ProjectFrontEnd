@@ -12,7 +12,7 @@ import 'package:bigbrewteatech/pages/checkout.dart';
 import 'package:bigbrewteatech/pages/deliveryaddress.dart';
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/OrderTransactionHistoryScreen',
+  initialRoute: '/',
   routes: {
     '/' : (context) => Dashboard(),
     '/menu' : (context) => Menu(),

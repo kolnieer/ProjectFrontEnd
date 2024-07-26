@@ -1,4 +1,23 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:bigbrewteatech/services/TransactionHistory.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+class cart {
+  final int cartId;
+  final String product;
+  final int userId;
+  final int quantity;
+  final double price;
+
+  cart({
+    required this.cartId,
+    required this.product,
+    required this.userId,
+    required this.quantity,
+    required this.price,});
+}
 
 class Cart extends StatefulWidget {
   const Cart({super.key});
@@ -8,6 +27,20 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
+
+  late Future<List<dynamic>> transactions;
+  List<bool> showDetails = [];
+  Future<List<dynamic>> fetchData() async{
+    final response = await http.get(Uri.parse('http://10.0.2.2:8080/api/v1/cart')
+    );
+    final data = jsonDecode(response.body);
+    print(data);
+    List transactions = <cart>[];
+    for (var transaction in data){
+      transactions.add(TransactionHistory.fromJson(transaction));
+    }
+    return transactions;
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:order_tracker_zen/order_tracker_zen.dart';
 
+class TrackingOrder {
+  final String OrderPlacement;
+  final String OrderPreparing;
+  final String OrderReadytoDeliver;
+  final String OrderisonitsWay;
+  final String OrderDelivered;
+
+  TrackingOrder({
+    required this.OrderPlacement,
+    required this.OrderPreparing,
+    required this.OrderReadytoDeliver,
+    required this.OrderisonitsWay,
+    required this.OrderDelivered,});
+}
+
+
 class trackorder extends StatefulWidget {
+
+
   const trackorder({super.key});
 
   @override
