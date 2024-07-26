@@ -29,7 +29,7 @@ class _OrderTransactionHistoryScreenState extends State<OrderTransactionHistoryS
   late Future<List<dynamic>> transactions;
   List<bool> showDetails = [];
   Future<List<dynamic>> fetchData() async{
-  final response = await http.get(Uri.parse('http://10.0.2.2:8080/api/v1/transactionhistory')
+  final response = await http.get(Uri.parse('http://192.168.194.34/api/v1/transactionhistory')
   );
   final data = jsonDecode(response.body);
   print(data);

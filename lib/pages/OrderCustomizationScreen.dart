@@ -18,7 +18,6 @@ class _OrderCustomizationScreenState extends State<OrderCustomizationScreen> {
   Map<String, int> addons = {};
 
   List<String> availableBranches = [
-    'Martinez St. Balayan',
     'Calaca Poblacion',
   ];
 
@@ -305,7 +304,7 @@ class _OrderCustomizationScreenState extends State<OrderCustomizationScreen> {
                           Navigator.pushReplacementNamed(context, '/checkout');
                         },
                         icon: Icon(Icons.add),
-                        label: Text('Add Order'),
+                        label: Text('Check Out'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.grey[300],
                           padding: EdgeInsets.symmetric(horizontal: 20),
